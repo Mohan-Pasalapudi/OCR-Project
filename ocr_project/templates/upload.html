@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function showErrorMessage(message) {
+            // Create an alert with the error message
+            var errorAlert = document.createElement('div');
+            errorAlert.classList.add('alert', 'alert-danger', 'alert-dismissible', 'fade', 'show');
+            errorAlert.innerHTML = '<strong>Error!</strong> ' + message;
+
+            var closeButton = document.createElement('button');
+            closeButton.setAttribute('type', 'button');
+            closeButton.classList.add('close');
+            closeButton.setAttribute('data-dismiss', 'alert');
+            closeButton.innerHTML = '<span>&times;</span>';
+
+            errorAlert.appendChild(closeButton);
+
+            // Append the alert to the popup-container
+            var popupContainer = document.getElementById('popup-container');
+            popupContainer.innerHTML = ''; // Clear any existing alerts
+            popupContainer.appendChild(errorAlert);
+
+            // Hide the popup after a delay
+            setTimeout(function() {
+                errorAlert.classList.remove('show');
+                errorAlert.style.display = 'none';
+            }, 200); // 3000 milliseconds (2 seconds)
+        }
+
+
+var clicked = false;
+
+$(function() {
+	calculate("#animator");
+	Animate("#animator")
+});
+
+$(window).resize(function() {
+	calculate("#animator");
+});
+
+function calculate(element) {
+	var width = $(element).width();
+	var height = $(element).height();
+
+	$(element).css("margin-left", -(width / 2));
+	$(element).css("margin-top", -(height / 2));
+}
+
+function Animate(element) {
+	if (!clicked) {
+		clicked = true;
+		$(".wrapper a").toggleClass("spin");
+		var letters = $(element).text().split("");
+		$(element).empty();
+		$.each(letters, function(index, value) {
+			setTimeout(function() {
+				var letter = "<span id='" + index + "'>" + value + "</span>"
+				$(letter).hide().appendTo(element).show("slow")
+			}, index * 150);
+		});
+
+		setTimeout(function() {
+			clicked = false;
+		}, letters.length * 150)
+	}
+}
+
+
+    </script>
+    <style>
+body {
+  background: #e0e5ec;
+}
+h1 {
+
+  text-align: center;
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+
+.frame {
+  width: 90%;
+  margin: 40px 30px 30px;
+  text-align: center;
+}
+button {
+  margin: 10px;
+}
+.custom-btn {
+  width: 110px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 6px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 1 */
+.btn-1 {
+  background: rgb(6,14,131);
+  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+  border: none;
+}
+
+/* 14 */
+.btn-14 {
+  background: rgb(255,151,0);
+  border: none;
+  z-index: 1;
+}
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5);
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-14:hover {
+  color: #000;
+}
+.btn-14:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+.btn-14:active {
+  top: 2px;
+}
+
+/* 15 */
+.btn-15 {
+  background: #b621fe;
+  border: none;
+  z-index: 1;
+}
+.btn-15:after {
+  position: relative;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 1;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 1px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-15:hover {
+  color: #fff;
+}
+.btn-15:hover:after {
+  left: 5;
+  width: 100%;
+}
+.btn-15:active {
+  top: 5px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+body {
+  background: #111;
+}
+.hidden {
+  opacity:0;
+}
+.console-container {
+
+  font-family:Khula;
+  font-size:4em;
+  text-align:center;
+  height:200px;
+  width:600px;
+  display:block;
+  position:relative;
+  color:white;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+.console-underscore {
+   display:inline-block;
+  position:relative;
+  top:-0.14em;
+  left:10px;
+}
+   </style>
+
+</head>
+<body>
+
+<header>
+
+
+    <div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>
+<script>
+ // function([string1, string2],target id,[color1,color2])
+ consoleText(['Extract Text From Images'], 'text',['tomato','rebeccapurple','lightblue']);
+
+function consoleText(words, id, colors) {
+  if (colors === undefined) colors = ['#fff'];
+  var visible = true;
+  var con = document.getElementById('console');
+  var letterCount = 1;
+  var x = 1;
+  var waiting = false;
+  var target = document.getElementById(id)
+  target.setAttribute('style', 'color:' + colors[0])
+  window.setInterval(function() {
+
+    if (letterCount === 0 && waiting === false) {
+      waiting = true;
+      target.innerHTML = words[0].substring(0, letterCount)
+      window.setTimeout(function() {
+        var usedColor = colors.shift();
+        colors.push(usedColor);
+        var usedWord = words.shift();
+        words.push(usedWord);
+        x = 1;
+        target.setAttribute('style', 'color:' + colors[0])
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+    } else if (letterCount === words[0].length + 1 && waiting === false) {
+      waiting = true;
+      window.setTimeout(function() {
+        x = -1;
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+    } else if (waiting === false) {
+      target.innerHTML = words[0].substring(0, letterCount)
+      letterCount += x;
+    }
+  }, 120)
+  window.setInterval(function() {
+    if (visible === true) {
+      con.className = 'console-underscore hidden'
+      visible = false;
+
+    } else {
+      con.className = 'console-underscore'
+
+      visible = true;
+    }
+  }, 400)
+}</script>
+</header>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function validateForm(event) {
+            var imageInput = document.querySelector('input[name="image"]');
+            if (!imageInput.files || imageInput.files.length === 0) {
+                event.preventDefault();
+                showErrorMessage("Please select an image to upload.");
+            }
+        }
+
+    </script>
+<div class="frame">
+    <h1 style="color: blue;">Upload Image</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_image' %}">
+        {% csrf_token %}
+        <input class="custom-btn btn-15" type="file" name="image">
+        <button  class="custom-btn btn-14" type="submit" onclick="validateForm(event)">Upload</button>
+    </form>
+     </div>
+
+    <!-- Container for popups -->
+    <div id="popup-container"></div>
+
+    <!-- Add Bootstrap JS script link here -->
+
+
+</body>
+</html>
+

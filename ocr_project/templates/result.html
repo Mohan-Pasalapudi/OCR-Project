@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR Result</title>
+</head>
+
+<style>
+$white: #ffffff;
+$black: #000000;
+$bg: #e8ebee;
+$radius: 15px;
+$shadow-color: #caced1;
+$text-font: "Quicksand", sans-serif;
+$btn-font: "Jost", sans-serif;
+$shadow: 13px 13px 20px $shadow-color, -13px -13px 20px $white;
+$shadow-in: inset 4px 4px 8px $shadow-color, inset -4px -4px 8px $white;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: $text-font;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $bg;
+}
+
+::selection {
+  background-color: $black;
+  color: white;
+}
+
+#container {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 50px;
+  margin: 30px;
+  box-shadow: $shadow;
+  border-radius: $radius;
+}
+
+#text {
+  box-sizing: border-box;
+  background-color: $bg;
+  color: $black;
+  border-radius: $radius;
+  padding: 10px 15px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: $text-font;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  box-shadow: $shadow-in;
+}
+
+#copy {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #482ff7;
+  color: $white;
+  width: 180px;
+  min-height: 44px;
+  font-size: 1rem;
+  font-family: $btn-font;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 5px;
+  border: 0;
+  border-radius: $radius;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: $shadow;
+
+  &:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    bottom: -20px;
+    left: 82px;
+    clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+  }
+
+  &:after {
+    content: attr(tooltip);
+    width: 140px;
+    bottom: -48px;
+    left: 20px;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  &:before,
+  &:after {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: $black;
+    color: $white;
+    transform: translateY(-10px);
+    transition: all 300ms ease;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 80vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.card {
+ flex: 1;
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: auto  auto auto;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+
+  font-family: cursive;
+  transition: color 0.3s;
+}
+
+.card:hover {
+color: rgb(88, 199, 250);
+  color: rgb(88 199 250 / 100%);
+  transition: color;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  transition: color;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: auto auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+
+</style>
+<body>
+   <h1>OCR Result</h1>
+<div class="card">
+ <p>
+      <span id="text">
+            {{ text }}
+        </span>
+<p/>
+</div>
+   <br>
+  <button color="green" ><a href="{% url 'upload_image' %}">Upload Another Image</a></button>
+   <br>
+             <button  class="accept" id="copy" tooltip="Copy to clipboard">Copy</button>
+
+
+    <script>
+        // JavaScript code
+        const textElement = document.getElementById("text");
+        const copyButton = document.getElementById("copy");
+
+        const copyText = () => {
+            const textToCopy = textElement.innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                copyButton.setAttribute("tooltip", "Copied! ✅");
+            });
+        };
+
+        const resetTooltip = () => {
+            copyButton.setAttribute("tooltip", "Copy to clipboard");
+        };
+
+        copyButton.addEventListener("click", copyText);
+        copyButton.addEventListener("mouseover", resetTooltip);
+    </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
