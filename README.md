@@ -14,4 +14,9 @@
 
 ![Screenshot (626)](https://github.com/Mohan-Pasalapudi/OCR-Project/assets/93028304/91ecc512-823b-4067-b007-a2de8b79c16e)
 
+
+
+![Screenshot (629)](https://github.com/Mohan-Pasalapudi/OCR-Project/assets/93028304/45c5df27-03ff-4be2-82ef-ae02d9c192a1)
+
+
 ![Screenshot (630)](https://github.com/Mohan-Pasalapudi/OCR-Project/assets/93028304/4344ea33-59c1-4473-88ab-a7ffad4c422e)
