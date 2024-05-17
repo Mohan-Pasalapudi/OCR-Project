@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ocrproject',
         'USER': 'root',
-        'PASSWORD': 'Y1012Jqkhkp',
+        'PASSWORD': '',#password
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
